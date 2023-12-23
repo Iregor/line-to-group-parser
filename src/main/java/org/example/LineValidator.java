@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class LineValidator {
     public static boolean validLineStart(String line) {
-        return line.charAt(0) != ';';
+        return !line.isEmpty() && line.charAt(0) != ';';
     }
 
     public static boolean validWordArr(String[] line) {
@@ -12,7 +12,8 @@ public class LineValidator {
     }
 
     public static boolean validWord(String word) {
-        return (word.charAt(0) == '"'
+        return (!word.isEmpty()
+                && word.charAt(0) == '"'
                 && word.charAt(word.length() - 1) == '"'
                 && word.chars().filter(ch -> ch == '"').count() == 2);
     }
