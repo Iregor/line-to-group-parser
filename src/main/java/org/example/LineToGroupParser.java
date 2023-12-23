@@ -26,7 +26,7 @@ public class LineToGroupParser {
 
         long end = System.currentTimeMillis();
         System.out.printf("Number of groups: %d.%n", lineGroups.size());
-        System.out.printf("File %s is prepared.", args[0]);
+        System.out.printf("File %s is prepared.%n", args[0]);
         System.out.println("Takes time: " + (end - start) / 1000 + " seconds.");
         System.out.println("Algorithm finished.");
     }
@@ -38,10 +38,10 @@ public class LineToGroupParser {
                         new GZIPInputStream(
                                 url.openStream()), StandardCharsets.UTF_8))) {
             br.lines()                                          //O(m * n), n - number of lines, m - words in line
-                    .filter(str -> str.charAt(0) != ';')
+                    .filter(LineValidator::validLineStart)      //or else split() produces wrong word array
                     .distinct()                                 //to retain unique lines
                     .map(str -> str.split(";"))
-                    .filter(LineValidator::validLine)
+                    .filter(LineValidator::validWordArr)
                     .forEach(processor::add);
         }
     }
