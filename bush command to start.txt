@@ -1,1 +1,1 @@
-java -jar lines-to-group-parser-1.0-SNAPSHOT.jar result-groups.txt
+java -Xmx1G -jar lines-to-group-parser-1.0-SNAPSHOT.jar result-groups.txt
