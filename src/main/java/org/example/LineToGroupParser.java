@@ -18,7 +18,7 @@ public class LineToGroupParser {
         GroupPrinter printer = new GroupPrinter(file);
 
         moveRemoveDataToProcessor(url, dsuProcessor);                               //O(m * n), n - number of lines, m - words in line
-        //moveCSVDataToProcessor(new File("lng-big.csv"), dsuProcessor);            //used to obtain csv data from big .7z file
+        //moveDiskDataToProcessor(new File("lng-big.csv"), dsuProcessor);            //used to obtain csv data from big .7z file
         List<List<String>> lineGroups = dsuProcessor.getSortedLineGroupsWithLeastSize(2);         //O(nLogN), n - number of groups
         printer.printGroups(lineGroups);                                            //O(n)
 
